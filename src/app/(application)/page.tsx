@@ -3,8 +3,8 @@
 import { orders } from '@public/¨mock-data.json'
 
 import { StyledPageTitle, StyledPageTitleSpan } from '@/components/_common/common-styles'
-import OrdersContainer from '@/components/order-container'
-import Order from '@/components/order-card'
+import OrdersContainer from '@/components/orders-container'
+import OrderCard from '@/components/order-card/order-card'
 
 import { OrderInterface } from '@/interfaces/order.interface'
 
@@ -20,7 +20,7 @@ export default function Home() {
 			<OrdersContainer>
 				{orders.length
 					? sortOrdersByDate(orders as unknown as OrderInterface[]).map((order) => (
-							<Order key={order.id} orderData={order as unknown as OrderInterface}></Order>
+							<OrderCard key={order.id} orderData={order as unknown as OrderInterface}></OrderCard>
 					  ))
 					: 'Aun no hay ordenes'}
 			</OrdersContainer>
