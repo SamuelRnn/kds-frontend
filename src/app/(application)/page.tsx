@@ -4,12 +4,13 @@ import { orders } from '@public/¨mock-data.json'
 
 import { StyledPageTitle, StyledPageTitleSpan } from '@/components/_common/common-styles'
 import OrdersContainer from '@/components/order-container'
-import Order from '@/components/order'
+import Order from '@/components/order-card'
+
 import { OrderInterface } from '@/interfaces/order.interface'
 
-interface Props {}
+import sortOrdersByDate from '@/helpers/sort-orders-by-date'
 
-export default function Home({}: Props) {
+export default function Home() {
 	return (
 		<>
 			<StyledPageTitle>
@@ -18,7 +19,7 @@ export default function Home({}: Props) {
 
 			<OrdersContainer>
 				{orders.length
-					? orders.map((order) => (
+					? sortOrdersByDate(orders as unknown as OrderInterface[]).map((order) => (
 							<Order key={order.id} orderData={order as unknown as OrderInterface}></Order>
 					  ))
 					: 'Aun no hay ordenes'}

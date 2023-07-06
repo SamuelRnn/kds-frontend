@@ -5,12 +5,18 @@
 	--colors-persian-red: #bb342f;
 	--colors-hundayi-yellow: #dd8148;
 	--colors-cambridge-green: #8cbcb9;
+	--colors-delft-blue: #3a405a;
 	--colors-ghost-white: #ccced5;
 
 	--colors-lightning-black-900: #030303;
 	--colors-lightning-black-800: #111111;
 
 	--colors-raisin-black: #626578;
+
+	--status-pending: var(--colors-persian-red);
+	--status-progress: var(--colors-delft-blue);
+	--status-finished: var(--colors-cambridge-green);
+	--status-canceled: var(--colors-persian-red);
 }
 
 body {

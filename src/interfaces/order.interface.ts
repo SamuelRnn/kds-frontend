@@ -1,8 +1,8 @@
 export enum OrderStatus {
-	finished,
-	progress,
-	pending,
-	cancelled,
+	finished = 'finished',
+	progress = 'progress',
+	pending = 'pending',
+	canceled = 'canceled',
 }
 
 export interface SpecialInstructions {
