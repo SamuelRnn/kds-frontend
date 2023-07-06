@@ -1,9 +1,4 @@
-export enum OrderStatus {
-	finished = 'finished',
-	progress = 'progress',
-	pending = 'pending',
-	canceled = 'canceled',
-}
+export type OrderStatus = 'finished' | 'progress' | 'pending' | 'canceled'
 
 export interface SpecialInstructions {
 	addons: string[]
@@ -14,12 +9,12 @@ export interface OrderItem {
 	id: string
 	name: string
 	specialInstructions: SpecialInstructions
-	quantity: string
+	quantity: number
 }
 
 export interface OrderInterface {
 	id: string
-	table: string
+	table: number
 	items: OrderItem[]
 	status: OrderStatus
 	orderTime: string

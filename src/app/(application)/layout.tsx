@@ -10,6 +10,8 @@ interface Props {
 
 const StyledPageContainer = styled.main`
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
 	overflow-y: scroll;
 `
 

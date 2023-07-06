@@ -15,6 +15,7 @@ const StyledListLabel = styled.span`
 	justify-content: space-between;
 	align-items: center;
 	border-radius: var(--radius-box);
+	user-select: none;
 `
 const StyledListContainer = styled.div`
 	overflow: hidden;

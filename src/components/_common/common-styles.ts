@@ -7,7 +7,14 @@ export const StyledPageTitle = styled.h1`
 	top: 0;
 	background-color: var(--colors-lightning-black-900);
 	padding: 1rem;
+	& > span {
+		color: var(--colors-ghost-white);
+	}
 `
-export const StyledPageTitleSpan = styled.span`
-	color: var(--colors-ghost-white);
+export const StyledEmptyOrdersScreen = styled.div`
+	display: grid;
+	place-content: center;
+	column-span: all;
+	height: 100%;
+	color: var(--colors-delft-blue);
 `

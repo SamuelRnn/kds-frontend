@@ -1,13 +1,14 @@
 import { OrderInterface, OrderItem, OrderStatus } from '@/interfaces/order.interface'
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { orders } from '../mock-data'
 
 export interface OrdersState {
 	orders: OrderInterface[]
 }
 
 const initialState: OrdersState = {
-	orders: [],
+	orders: orders || [],
 }
 
 export const ordersSlice = createSlice({

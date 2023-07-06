@@ -1,6 +1,6 @@
 import { OrderInterface } from '@/interfaces/order.interface'
 import { styled } from 'styled-components'
-import Badge from './badge'
+import StatusBadge from './status-badge'
 import OrderItems from './order-items'
 import Counter from './counter'
 
@@ -30,7 +30,7 @@ export default function OrderCard({ orderData }: Props) {
 				<p>
 					Table {orderData.table} - <Counter orderDate={orderData.orderTime} />
 				</p>
-				<Badge status={orderData.status} />
+				<StatusBadge status={orderData.status} />
 			</StyledCardTitleContainer>
 
 			<OrderItems items={orderData.items} />

@@ -11,7 +11,7 @@
 						"addons": [],
 						"exclusions": []
 					},
-					"quantity": "1"
+					"quantity": 1
 				},
 				{
 					"id": "sashimi",
@@ -20,7 +20,7 @@
 						"addons": [],
 						"exclusions": []
 					},
-					"quantity": "2"
+					"quantity": 2
 				}
 			],
 			"status": "pending",
@@ -37,7 +37,7 @@
 						"addons": ["Extra salsa de soja"],
 						"exclusions": []
 					},
-					"quantity": "3"
+					"quantity": 3
 				},
 				{
 					"id": "gyudon",
@@ -46,7 +46,7 @@
 						"addons": [],
 						"exclusions": ["Sin cebolla"]
 					},
-					"quantity": "1"
+					"quantity": 1
 				}
 			],
 			"status": "progress",
@@ -63,7 +63,7 @@
 						"addons": [],
 						"exclusions": []
 					},
-					"quantity": "2"
+					"quantity": 2
 				},
 				{
 					"id": "udon_tempura_camarones",
@@ -72,7 +72,7 @@
 						"addons": [],
 						"exclusions": []
 					},
-					"quantity": "1"
+					"quantity": 1
 				},
 				{
 					"id": "gyoza",
@@ -81,7 +81,7 @@
 						"addons": [],
 						"exclusions": ["Sin ajo"]
 					},
-					"quantity": "4"
+					"quantity": 4
 				}
 			],
 			"status": "pending",
@@ -89,7 +89,7 @@
 		},
 		{
 			"id": "order-4",
-			"table": "3",
+			"table": 3,
 			"items": [
 				{
 					"id": "tempura_vegetales",
@@ -98,7 +98,7 @@
 						"addons": ["extra salsa de soja"],
 						"exclusions": ["sin cebolla"]
 					},
-					"quantity": "1"
+					"quantity": 1
 				},
 				{
 					"id": "gyoza",
@@ -107,7 +107,7 @@
 						"addons": [],
 						"exclusions": ["sin salsa agridulce"]
 					},
-					"quantity": "2"
+					"quantity": 2
 				}
 			],
 			"status": "progress",
@@ -115,7 +115,7 @@
 		},
 		{
 			"id": "order-5",
-			"table": "5",
+			"table": 5,
 			"items": [
 				{
 					"id": "ramen_miso",
@@ -124,7 +124,7 @@
 						"addons": ["extra cerdo"],
 						"exclusions": []
 					},
-					"quantity": "1"
+					"quantity": 1
 				},
 				{
 					"id": "yakisoba",
@@ -133,7 +133,7 @@
 						"addons": ["extra verduras"],
 						"exclusions": []
 					},
-					"quantity": "1"
+					"quantity": 1
 				},
 				{
 					"id": "gyudon",
@@ -142,7 +142,7 @@
 						"addons": [],
 						"exclusions": ["sin cebolla"]
 					},
-					"quantity": "2"
+					"quantity": 2
 				}
 			],
 			"status": "pending",
@@ -150,7 +150,7 @@
 		},
 		{
 			"id": "order-6",
-			"table": "2",
+			"table": 2,
 			"items": [
 				{
 					"id": "sukiyaki",
@@ -159,7 +159,7 @@
 						"addons": [],
 						"exclusions": []
 					},
-					"quantity": "1"
+					"quantity": 1
 				},
 				{
 					"id": "onigiri",
@@ -168,7 +168,7 @@
 						"addons": [],
 						"exclusions": []
 					},
-					"quantity": "3"
+					"quantity": 3
 				}
 			],
 			"status": "canceled",
