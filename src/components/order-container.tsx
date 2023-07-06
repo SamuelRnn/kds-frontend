@@ -3,11 +3,9 @@ import { styled } from 'styled-components'
 const StyledContainer = styled.div`
 	width: 100%;
 	height: 100%;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(360px, auto));
-	gap: 1rem;
+	columns: 5 360px;
+	column-gap: var(--masonry-gap);
 	padding: 1rem;
-	grid-template-rows: masonry;
 `
 interface Props {
 	children: React.ReactNode

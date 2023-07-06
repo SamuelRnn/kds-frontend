@@ -5,22 +5,22 @@ export enum OrderStatus {
 	cancelled,
 }
 
-export interface SpecialInstruction {
-	addons: string[] | []
-	exclusions: string[] | []
+export interface SpecialInstructions {
+	addons: string[]
+	exclusions: string[]
 }
 
 export interface OrderItem {
 	id: string
 	name: string
-	specialInstructions: SpecialInstruction
+	specialInstructions: SpecialInstructions
 	quantity: string
 }
 
-export interface Order {
+export interface OrderInterface {
 	id: string
-	table: number
+	table: string
 	items: OrderItem[]
 	status: OrderStatus
-	orderTime: Date
+	orderTime: string
 }
