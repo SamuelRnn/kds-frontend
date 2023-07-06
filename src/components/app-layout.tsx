@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 
-import Sidebar from './sidebar'
+import Sidebar from './sidebar/sidebar'
 
 const StyledAppContainer = styled.div`
 	display: grid;

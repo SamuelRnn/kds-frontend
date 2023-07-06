@@ -2,7 +2,8 @@
 
 import AppLayout from '@/components/app-layout'
 import { styled } from 'styled-components'
-
+import { Provider } from 'react-redux'
+import { store } from '@/store/store'
 interface Props {
 	children: React.ReactNode
 }
@@ -14,8 +15,10 @@ const StyledPageContainer = styled.main`
 
 export default function Layout({ children }: Props) {
 	return (
-		<AppLayout>
-			<StyledPageContainer>{children}</StyledPageContainer>
-		</AppLayout>
+		<Provider store={store}>
+			<AppLayout>
+				<StyledPageContainer>{children}</StyledPageContainer>
+			</AppLayout>
+		</Provider>
 	)
 }
