@@ -1,0 +1,84 @@
+{
+	"menu": [
+		{
+			"id": "sushi",
+			"name": "Sushi (10 piezas)"
+		},
+		{
+			"id": "sashimi",
+			"name": "Sashimi (8 piezas)"
+		},
+		{
+			"id": "maki",
+			"name": "Maki Rolls (6 piezas)"
+		},
+		{
+			"id": "tempura_vegetales",
+			"name": "Tempura de vegetales"
+		},
+		{
+			"id": "yakitori",
+			"name": "Yakitori (brochetas de pollo)"
+		},
+		{
+			"id": "gyudon",
+			"name": "Gyudon (bol de arroz con carne de res)"
+		},
+		{
+			"id": "ramen_miso",
+			"name": "Ramen de miso"
+		},
+		{
+			"id": "udon_tempura_camarones",
+			"name": "Udon con tempura de camarones"
+		},
+		{
+			"id": "tonkatsu",
+			"name": "Tonkatsu (chuleta de cerdo empanizada)"
+		},
+		{
+			"id": "teriyaki_salmon",
+			"name": "Teriyaki de salmón"
+		},
+		{
+			"id": "okonomiyaki",
+			"name": "Okonomiyaki (panqueque japonés)"
+		},
+		{
+			"id": "takoyaki",
+			"name": "Takoyaki (bolas de pulpo)"
+		},
+		{
+			"id": "gyoza",
+			"name": "Gyoza (empanadillas japonesas)"
+		},
+		{
+			"id": "yakisoba",
+			"name": "Yakisoba (fideos fritos)"
+		},
+		{
+			"id": "unagi_don",
+			"name": "Unagi don (tazón de anguila a la parrilla)"
+		},
+		{
+			"id": "chirashi_sushi",
+			"name": "Chirashi Sushi"
+		},
+		{
+			"id": "yakiudon",
+			"name": "Yakiudon (fideos salteados)"
+		},
+		{
+			"id": "sukiyaki",
+			"name": "Sukiyaki (estofado japonés)"
+		},
+		{
+			"id": "onigiri",
+			"name": "Onigiri (bolas de arroz rellenas)"
+		},
+		{
+			"id": "matcha_latte",
+			"name": "Matcha Latte"
+		}
+	]
+}

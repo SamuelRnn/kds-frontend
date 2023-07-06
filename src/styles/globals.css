@@ -1,0 +1,18 @@
+:root {
+	--radius-box: 0.75rem;
+
+	--colors-persian-red: #bb342f;
+	--colors-hundayi-yellow: #dd8148;
+	--colors-cambridge-green: #8cbcb9;
+	--colors-ghost-white: #ccced5;
+
+	--colors-lightning-black-900: #030303;
+	--colors-lightning-black-800: #111111;
+
+	--colors-raisin-black: #626578;
+}
+
+body {
+	background-color: var(--colors-lightning-black-900);
+	color: var(--colors-ghost-white);
+}
