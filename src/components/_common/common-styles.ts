@@ -1,7 +1,7 @@
 import { styled } from 'styled-components'
 
 export const StyledPageTitle = styled.h1`
-	color: var(--colors-raisin-black);
+	color: var(--colors-raisin-gray);
 	font-size: 1.5rem;
 	position: sticky;
 	top: 0;

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 
 const StyledSpan = styled.span`
-	color: var(--colors-raisin-black);
+	color: var(--colors-raisin-gray);
+	user-select: none;
 `
 
 interface Props {
@@ -22,7 +23,7 @@ export default function Counter({ orderDate }: Props) {
 		}
 	}, [seconds])
 
-	return <StyledSpan>{formatTime(seconds)}</StyledSpan>
+	return <StyledSpan title='time elapsed'>{formatTime(seconds)}</StyledSpan>
 }
 
 function formatTime(seconds: number) {

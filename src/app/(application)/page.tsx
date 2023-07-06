@@ -19,7 +19,7 @@ export default function Home() {
 
 			<OrdersContainer>
 				{activeOrders.length ? (
-					sortOrdersByDate(orders).map((order) => (
+					sortOrdersByDate(activeOrders).map((order) => (
 						<OrderCard key={order.id} orderData={order}></OrderCard>
 					))
 				) : (

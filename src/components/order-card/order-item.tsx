@@ -13,7 +13,7 @@ const StyledItemTitle = styled.div`
 	justify-content: space-between;
 	padding: 0.25rem 0;
 	& > p {
-		color: var(--colors-raisin-black);
+		color: var(--colors-raisin-gray);
 	}
 `
 const StyledModsContainer = styled.div`

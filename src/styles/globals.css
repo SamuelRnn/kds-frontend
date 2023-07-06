@@ -8,17 +8,17 @@
 	--colors-persian-red: #bb342f;
 	--colors-hundayi-yellow: #dd8148;
 	--colors-cambridge-green: #8cbcb9;
-	--colors-delft-blue: #3a405a;
 	--colors-ghost-white: #ccced5;
+	--colors-ucla-blue: #2374ab;
 
 	--colors-lightning-black-700: #313133;
 	--colors-lightning-black-800: #111111;
 	--colors-lightning-black-900: #030303;
 
-	--colors-raisin-black: #626578;
+	--colors-raisin-gray: #626578;
 
 	--status-pending: var(--colors-hundayi-yellow);
-	--status-progress: var(--colors-delft-blue);
+	--status-progress: var(--colors-ucla-blue);
 	--status-finished: var(--colors-cambridge-green);
 	--status-canceled: var(--colors-persian-red);
 }
