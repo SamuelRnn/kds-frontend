@@ -6,8 +6,8 @@ export enum OrderStatus {
 }
 
 export interface SpecialInstruction {
-	addons: string[]
-	exclusions: string[]
+	addons: string[] | []
+	exclusions: string[] | []
 }
 
 export interface OrderItem {
