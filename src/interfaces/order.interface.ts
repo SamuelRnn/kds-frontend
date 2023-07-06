@@ -1,4 +1,4 @@
-export type OrderStatus = 'finished' | 'progress' | 'pending' | 'canceled'
+export type OrderStatus = 'done' | 'progress' | 'pending' | 'canceled'
 
 export interface SpecialInstructions {
 	addons: string[]

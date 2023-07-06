@@ -7,6 +7,7 @@ export const StyledPageTitle = styled.h1`
 	top: 0;
 	background-color: var(--colors-lightning-black-900);
 	padding: 1rem;
+	z-index: 10;
 	& > span {
 		color: var(--colors-ghost-white);
 	}

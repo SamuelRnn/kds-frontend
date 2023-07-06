@@ -1,7 +1,7 @@
 import { OrderStatus } from '@/interfaces/order.interface'
 
 const badgesMap = {
-	finished: 'Finished',
+	done: 'Done',
 	progress: 'In Progress',
 	pending: 'Pending',
 	canceled: 'Canceled',

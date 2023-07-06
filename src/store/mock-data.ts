@@ -175,4 +175,74 @@ export const orders: OrderInterface[] = [
 		status: 'canceled',
 		orderTime: '2023-07-06T15:30:00.000Z',
 	},
+	{
+		id: 'order-7',
+		table: 6,
+		items: [
+			{
+				id: 'sushi',
+				name: 'Sushi (10 piezas)',
+				specialInstructions: {
+					addons: [],
+					exclusions: [],
+				},
+				quantity: 1,
+			},
+			{
+				id: 'tempura_vegetales',
+				name: 'Tempura de vegetales',
+				specialInstructions: {
+					addons: [],
+					exclusions: [],
+				},
+				quantity: 1,
+			},
+			{
+				id: 'teriyaki_salmon',
+				name: 'Teriyaki de salmón',
+				specialInstructions: {
+					addons: [],
+					exclusions: [],
+				},
+				quantity: 2,
+			},
+		],
+		status: 'done',
+		orderTime: '2023-07-06T15:30:00',
+	},
+	{
+		id: 'order-8',
+		table: 6,
+		items: [
+			{
+				id: 'gyudon',
+				name: 'Gyudon (bol de arroz con carne de res)',
+				specialInstructions: {
+					addons: ['Extra sauce on the side'],
+					exclusions: [],
+				},
+				quantity: 2,
+			},
+			{
+				id: 'ramen_miso',
+				name: 'Ramen de miso',
+				specialInstructions: {
+					addons: [],
+					exclusions: [],
+				},
+				quantity: 1,
+			},
+			{
+				id: 'yakisoba',
+				name: 'Yakisoba (fideos fritos)',
+				specialInstructions: {
+					addons: ['Extra spicy'],
+					exclusions: [],
+				},
+				quantity: 1,
+			},
+		],
+		status: 'done',
+		orderTime: '2023-07-06T16:00:00',
+	},
 ]

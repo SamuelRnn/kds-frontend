@@ -19,7 +19,7 @@
 
 	--status-pending: var(--colors-hundayi-yellow);
 	--status-progress: var(--colors-ucla-blue);
-	--status-finished: var(--colors-cambridge-green);
+	--status-done: var(--colors-cambridge-green);
 	--status-canceled: var(--colors-persian-red);
 }
 

@@ -28,9 +28,9 @@ const StyledStatusBadge = styled.span`
 		color: var(--status-progress);
 		border: 1px solid var(--status-progress);
 	}
-	&[data-variant='finished'] {
-		color: var(--status-finished);
-		border: 1px solid var(--status-finished);
+	&[data-variant='done'] {
+		color: var(--status-done);
+		border: 1px solid var(--status-done);
 	}
 `
 const AnimatedProgresssIcon = styled(BiLoaderAlt)`
@@ -52,7 +52,7 @@ const statusIconsMap = {
 	progress: <AnimatedProgresssIcon />,
 	pending: <AiFillClockCircle />,
 	canceled: <BsXLg />,
-	finished: <MdOutlineDone />,
+	done: <MdOutlineDone />,
 }
 
 interface Props {
