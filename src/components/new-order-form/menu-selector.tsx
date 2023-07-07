@@ -3,10 +3,14 @@ import { StyledBaseButton } from '../_common/common-styles'
 
 const StyledMenuSelectorContainer = styled.div`
 	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
+	flex-direction: column;
+	row-gap: 1.25rem;
+	margin-right: 1rem;
 `
-const StyledMenuButton = styled(StyledBaseButton)``
+const StyledMenuButton = styled(StyledBaseButton)`
+	font-size: 0.875rem;
+	padding: 0.75rem;
+`
 
 interface MenuItem {
 	id: string
@@ -22,7 +26,7 @@ export default function MenuSelector({ menu, onSelect }: Props) {
 	return (
 		<StyledMenuSelectorContainer>
 			{menu.map((menuItem) => (
-				<StyledMenuButton key={menuItem.id} onClick={() => onSelect(menuItem)}>
+				<StyledMenuButton key={menuItem.id} onClick={() => onSelect(menuItem)} type='button'>
 					{menuItem.name}
 				</StyledMenuButton>
 			))}

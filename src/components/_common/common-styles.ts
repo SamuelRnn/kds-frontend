@@ -20,7 +20,7 @@ export const StyledEmptyOrdersScreen = styled.div`
 	color: var(--colors-delft-blue);
 `
 export const StyledBaseButton = styled.button`
-	padding: 0.75rem;
+	padding: 0.5rem 0.75rem;
 	background-color: var(--colors-lightning-black-700);
 	border-radius: var(--radius-box);
 `
