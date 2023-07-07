@@ -23,12 +23,6 @@ export default function Sidebar() {
 	const navLinks = useMemo(
 		() => [
 			{
-				href: '/new-order',
-				label: 'New order',
-				icon: <BsFillClipboardPlusFill />,
-				active: pathname === '/new-order',
-			},
-			{
 				href: '/',
 				label: 'Active',
 				icon: <FaConciergeBell />,
@@ -45,6 +39,12 @@ export default function Sidebar() {
 				label: 'Canceled',
 				icon: statusMap['canceled'].icon,
 				active: pathname === '/canceled-orders',
+			},
+			{
+				href: '/new-order',
+				label: 'New order',
+				icon: <BsFillClipboardPlusFill />,
+				active: pathname === '/new-order',
 			},
 		],
 		[pathname]
