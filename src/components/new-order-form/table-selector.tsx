@@ -2,11 +2,6 @@ import { useState } from 'react'
 import { styled } from 'styled-components'
 import { StyledBaseButton } from '../_common/common-styles'
 
-interface Props {
-	maxTables: number
-	onSelect: (tableNumber: number) => void
-}
-
 const StyledTableSelectorWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 100px);
@@ -26,20 +21,20 @@ const StyledButton = styled(StyledBaseButton)`
 	}
 `
 
-export default function TableSelector({ maxTables, onSelect }: Props) {
-	const [selectedTable, selectTableNumber] = useState<null | number>(null)
+interface Props {
+	maxTables: number
+	selectedNumber: number | null
+	onSelect: (tableNumber: number) => void
+}
 
-	const selectHandler = (number: number) => {
-		selectTableNumber(number)
-		onSelect(number)
-	}
+export default function TableSelector({ maxTables, onSelect, selectedNumber }: Props) {
 	return (
 		<StyledTableSelectorWrapper>
 			{Array.from({ length: maxTables }, (_, index) => index + 1).map((tableNumber) => (
 				<StyledButton
 					key={tableNumber}
-					onClick={() => selectHandler(tableNumber)}
-					data-selected={selectedTable === tableNumber}
+					onClick={() => selectedNumber !== tableNumber && onSelect(tableNumber)}
+					data-selected={selectedNumber === tableNumber}
 					type='button'
 				>
 					Table {tableNumber}

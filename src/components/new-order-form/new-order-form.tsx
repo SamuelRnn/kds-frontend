@@ -29,7 +29,11 @@ export default function NewOrderForm({}: Props) {
 				<StyledLayoutColumnContainer>
 					<StyledSection>
 						<StyledLabel>Select a table</StyledLabel>
-						<TableSelector onSelect={() => ''} maxTables={MAX_TABLES} />
+						<TableSelector
+							onSelect={setTableNumber}
+							maxTables={MAX_TABLES}
+							selectedNumber={tableNumber}
+						/>
 					</StyledSection>
 
 					<StyledSection>
