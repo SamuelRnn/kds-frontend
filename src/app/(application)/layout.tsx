@@ -8,18 +8,23 @@ interface Props {
 	children: React.ReactNode
 }
 
-const StyledPageContainer = styled.main`
+const StyledPageContainer = styled.div`
 	height: 100vh;
-	display: flex;
-	flex-direction: column;
+	/* display: flex; */
+	/* flex-direction: column; */
 	overflow-y: scroll;
+`
+const StyledPage = styled.main`
+	height: auto;
 `
 
 export default function Layout({ children }: Props) {
 	return (
 		<Provider store={store}>
 			<AppLayout>
-				<StyledPageContainer>{children}</StyledPageContainer>
+				<StyledPageContainer>
+					<StyledPage>{children}</StyledPage>
+				</StyledPageContainer>
 			</AppLayout>
 		</Provider>
 	)
