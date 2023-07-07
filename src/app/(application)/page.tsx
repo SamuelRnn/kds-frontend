@@ -20,7 +20,7 @@ export default function Home() {
 			<OrdersContainer>
 				{activeOrders.length ? (
 					sortOrdersByDate(activeOrders).map((order) => (
-						<OrderCard key={order.id} orderData={order}></OrderCard>
+						<OrderCard key={order.id} orderData={order} />
 					))
 				) : (
 					<StyledEmptyOrdersScreen>No active orders yet</StyledEmptyOrdersScreen>
