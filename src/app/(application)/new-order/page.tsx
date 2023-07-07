@@ -1,11 +1,12 @@
 'use client'
-import { StyledPageTitle } from '@/components/_common/common-styles'
+//------------------------------
+// TODO: change it to a modal with portal
+//------------------------------
+import NewOrderForm from '@/components/new-order-form/new-order-form'
 import { styled } from 'styled-components'
 
 const StyledFormContainer = styled.div`
 	width: 100%;
-	display: grid;
-	place-content: center;
 `
 
 interface Props {}
@@ -13,8 +14,9 @@ interface Props {}
 export default function OrderPage({}: Props) {
 	return (
 		<>
-			<StyledPageTitle>New order</StyledPageTitle>
-			<StyledFormContainer>here the form</StyledFormContainer>
+			<StyledFormContainer>
+				<NewOrderForm />
+			</StyledFormContainer>
 		</>
 	)
 }

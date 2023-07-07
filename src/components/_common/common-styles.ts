@@ -19,3 +19,8 @@ export const StyledEmptyOrdersScreen = styled.div`
 	height: 100%;
 	color: var(--colors-delft-blue);
 `
+export const StyledBaseButton = styled.button`
+	padding: 1rem;
+	background-color: var(--colors-lightning-black-700);
+	border-radius: var(--radius-box);
+`
