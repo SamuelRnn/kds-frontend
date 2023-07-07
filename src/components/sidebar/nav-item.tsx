@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { styled, css } from 'styled-components'
 
-const StyledNavItem = styled.div<{ active: boolean }>`
+const StyledNavItem = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,22 +9,18 @@ const StyledNavItem = styled.div<{ active: boolean }>`
 	gap: 0.3rem;
 	padding: 0.5rem;
 	position: relative;
-	transition: color ease-out 100ms;
+	transition: color ease-out 80ms;
+	color: var(--colors-raisin-gray);
 
-	${({ active }) =>
-		active
-			? css`
-					color: var(--colors-ghost-white);
-			  `
-			: css`
-					color: var(--colors-raisin-gray);
-			  `}
+	&[data-active='true'] {
+		color: var(--colors-ghost-white);
+	}
 
 	& span {
 		font-size: 1rem;
 	}
 `
-const StyledActiveIndicator = styled.div<{ active: boolean }>`
+const StyledActiveIndicator = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -32,9 +28,12 @@ const StyledActiveIndicator = styled.div<{ active: boolean }>`
 	height: 100%;
 	border-radius: 0 10px 10px 0;
 	background-color: var(--colors-raisin-gray);
-	transition: opacity ease-out 100ms;
+	transition: opacity ease-out 80ms;
+	opacity: 0;
 
-	opacity: ${({ active }) => (active ? 1 : 0)};
+	&[data-active='true'] {
+		opacity: 1;
+	}
 `
 
 interface Props {
@@ -46,11 +45,11 @@ interface Props {
 export default function NavItem({ href, label, icon, active }: Props) {
 	return (
 		<Link href={href}>
-			<StyledNavItem active={active}>
+			<StyledNavItem data-active={active}>
 				{icon}
 				<span>{label}</span>
 
-				<StyledActiveIndicator active={active} />
+				<StyledActiveIndicator data-active={active} />
 			</StyledNavItem>
 		</Link>
 	)
