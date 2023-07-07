@@ -1,23 +1,10 @@
 import Link from 'next/link'
-import { styled, css } from 'styled-components'
+import { styled } from 'styled-components'
+import { StyledBaseNavItem } from '../_common/common-styles'
 
-const StyledNavItem = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	font-size: 2rem;
-	gap: 0.3rem;
-	padding: 0.5rem;
-	position: relative;
-	transition: color ease-out 80ms;
-	color: var(--colors-raisin-gray);
-
+const StyledNavItem = styled(StyledBaseNavItem)`
 	&[data-active='true'] {
 		color: var(--colors-ghost-white);
-	}
-
-	& span {
-		font-size: 1rem;
 	}
 `
 const StyledActiveIndicator = styled.div`
@@ -37,20 +24,32 @@ const StyledActiveIndicator = styled.div`
 `
 
 interface Props {
-	href: string
+	href?: string
 	label: string
 	icon: React.ReactNode
-	active: boolean
+	active?: boolean
+	isButton?: boolean
+	onClick?: () => void
 }
-export default function NavItem({ href, label, icon, active }: Props) {
-	return (
-		<Link href={href}>
-			<StyledNavItem data-active={active}>
-				{icon}
-				<span>{label}</span>
+export default function NavItem({ href, label, icon, active, isButton = false, onClick }: Props) {
+	if (isButton && !href) {
+		return (
+			<button onClick={onClick}>
+				<StyledBaseNavItem>
+					{icon}
+					<span>{label}</span>
+				</StyledBaseNavItem>
+			</button>
+		)
+	} else
+		return (
+			<Link href={href || '/'}>
+				<StyledNavItem data-active={active}>
+					{icon}
+					<span>{label}</span>
 
-				<StyledActiveIndicator data-active={active} />
-			</StyledNavItem>
-		</Link>
-	)
+					<StyledActiveIndicator data-active={active} />
+				</StyledNavItem>
+			</Link>
+		)
 }

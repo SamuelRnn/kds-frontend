@@ -15,8 +15,11 @@ const StyledSidebarContainer = styled.div`
 const StyledNavbar = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding: 2rem 0;
 	gap: 1.5rem;
+`
+const StyledNavBlankSpace = styled.div`
+	visibility: hidden;
+	height: 2rem;
 `
 export default function Sidebar() {
 	const pathname = usePathname()
@@ -40,12 +43,6 @@ export default function Sidebar() {
 				icon: statusMap['canceled'].icon,
 				active: pathname === '/canceled-orders',
 			},
-			{
-				href: '/new-order',
-				label: 'New order',
-				icon: <BsFillClipboardPlusFill />,
-				active: pathname === '/new-order',
-			},
 		],
 		[pathname]
 	)
@@ -54,10 +51,16 @@ export default function Sidebar() {
 		<StyledSidebarContainer>
 			<Logo />
 
+			<StyledNavBlankSpace />
+
 			<StyledNavbar>
 				{navLinks.map(({ href, label, icon, active }) => (
 					<NavItem key={href} href={href} icon={icon} label={label} active={active} />
 				))}
+
+				<StyledNavBlankSpace />
+
+				<NavItem isButton label='New order' onClick={() => ''} icon={<BsFillClipboardPlusFill />} />
 			</StyledNavbar>
 		</StyledSidebarContainer>
 	)

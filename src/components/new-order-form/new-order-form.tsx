@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 import { menu } from '@public/menu.json'
 import TableSelector from './table-selector'
+import MenuSelector from './menu-selector'
 
 const StyledForm = styled.form`
 	width: min(95%, 1200px);
@@ -43,6 +44,7 @@ export default function NewOrderForm({}: Props) {
 
 					<StyledSection>
 						<StyledLabel>Add items to the order</StyledLabel>
+						<MenuSelector menu={menu} onSelect={() => ''} />
 					</StyledSection>
 				</StyledSelectionsContainer>
 

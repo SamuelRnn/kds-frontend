@@ -1,31 +1,12 @@
 'use client'
 
-import { StyledEmptyOrdersScreen, StyledPageTitle } from '@/components/_common/common-styles'
-import OrdersContainer from '@/components/orders-container'
-import OrderCard from '@/components/order-card/order-card'
-import sortOrdersByDate from '@/helpers/sort-orders-by-date'
-import useOrdersStore from '@/hooks/use-orders-store'
+import PageContent from '@/components/page-content'
+import { OrderInterface } from '@/interfaces/order.interface'
 
 export default function Home() {
-	const { orders } = useOrdersStore()
+	const filterCondition = (order: OrderInterface) => {
+		return order.status !== 'canceled' && order.status !== 'done'
+	}
 
-	const activeOrders = orders.filter((order) => order.status !== 'canceled')
-
-	return (
-		<>
-			<StyledPageTitle>
-				<span>{activeOrders.length}</span> active orders
-			</StyledPageTitle>
-
-			<OrdersContainer>
-				{activeOrders.length ? (
-					sortOrdersByDate(activeOrders).map((order) => (
-						<OrderCard key={order.id} orderData={order} />
-					))
-				) : (
-					<StyledEmptyOrdersScreen>No active orders yet</StyledEmptyOrdersScreen>
-				)}
-			</OrdersContainer>
-		</>
-	)
+	return <PageContent title='Current active orders' filterCondition={filterCondition} />
 }
