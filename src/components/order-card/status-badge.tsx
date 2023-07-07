@@ -1,10 +1,6 @@
-import getStatusLabel from '@/helpers/get-status-label'
+import { statusMap } from '@/helpers/status-data-map'
 import { OrderStatus } from '@/interfaces/order.interface'
 import { styled } from 'styled-components'
-import { BiLoaderAlt } from 'react-icons/bi'
-import { AiFillClockCircle } from 'react-icons/ai'
-import { BsXLg } from 'react-icons/bs'
-import { MdOutlineDone } from 'react-icons/md'
 
 const StyledStatusBadge = styled.span`
 	border-radius: 10rem;
@@ -33,27 +29,6 @@ const StyledStatusBadge = styled.span`
 		border: 1px solid var(--status-done);
 	}
 `
-const AnimatedProgresssIcon = styled(BiLoaderAlt)`
-	@keyframes rotate {
-		0% {
-			rotate: 0deg;
-		}
-		100% {
-			rotate: 360deg;
-		}
-	}
-	animation-name: rotate;
-	animation-duration: 1.2s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-`
-
-const statusIconsMap = {
-	progress: <AnimatedProgresssIcon />,
-	pending: <AiFillClockCircle />,
-	canceled: <BsXLg />,
-	done: <MdOutlineDone />,
-}
 
 interface Props {
 	status: OrderStatus
@@ -62,8 +37,8 @@ interface Props {
 export default function Badge({ status }: Props) {
 	return (
 		<StyledStatusBadge data-variant={status}>
-			{getStatusLabel(status)}
-			{statusIconsMap[status]}
+			{statusMap[status].label}
+			{statusMap[status].icon}
 		</StyledStatusBadge>
 	)
 }

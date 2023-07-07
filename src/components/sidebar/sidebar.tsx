@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation'
 import { BsFillClipboardPlusFill } from 'react-icons/bs'
 import { FaConciergeBell } from 'react-icons/fa'
 import NavItem from './nav-item'
+import { statusMap } from '@/helpers/status-data-map'
 
 const StyledSidebarContainer = styled.div`
 	width: 8rem;
@@ -22,16 +23,28 @@ export default function Sidebar() {
 	const navLinks = useMemo(
 		() => [
 			{
-				href: '/',
-				label: 'Active orders',
-				icon: <FaConciergeBell />,
-				active: pathname === '/',
-			},
-			{
 				href: '/new-order',
 				label: 'New order',
 				icon: <BsFillClipboardPlusFill />,
 				active: pathname === '/new-order',
+			},
+			{
+				href: '/',
+				label: 'Active',
+				icon: <FaConciergeBell />,
+				active: pathname === '/',
+			},
+			{
+				href: '/done-orders',
+				label: 'Done',
+				icon: statusMap['done'].icon,
+				active: pathname === '/done-orders',
+			},
+			{
+				href: '/canceled-orders',
+				label: 'Canceled',
+				icon: statusMap['canceled'].icon,
+				active: pathname === '/canceled-orders',
 			},
 		],
 		[pathname]
