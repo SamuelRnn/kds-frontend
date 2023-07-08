@@ -1,7 +1,6 @@
 import { styled } from 'styled-components'
 import Logo from './logo'
 import { useMemo, useState } from 'react'
-import { usePathname } from 'next/navigation'
 import { BsFillClipboardPlusFill } from 'react-icons/bs'
 import { FaConciergeBell } from 'react-icons/fa'
 import NavItem from './nav-item'
@@ -9,6 +8,8 @@ import { statusMap } from '@/helpers/status-data-map'
 import { createPortal } from 'react-dom'
 import Form from '@/components/new-order-form/form-modal'
 import useOrdersStore from '@/hooks/use-orders-store'
+import useFilterStore from '@/hooks/use-filter-store'
+import { FilterState } from '@/store/filter-slice'
 
 const StyledSidebarContainer = styled.div`
 	width: 8rem;
@@ -26,7 +27,7 @@ const StyledNavBlankSpace = styled.div`
 `
 export default function Sidebar() {
 	const { orders } = useOrdersStore()
-	const pathname = usePathname()
+	const { filter, changeFilter } = useFilterStore()
 
 	const getOrdersLengthByFilter = (filterString: string) => {
 		return orders.filter((order) => filterString.includes(order.status)).length
@@ -34,29 +35,29 @@ export default function Sidebar() {
 	const navLinks = useMemo(
 		() => [
 			{
-				href: '/',
 				label: 'Active',
+				id: 'active',
 				icon: <FaConciergeBell />,
-				active: pathname === '/',
+				active: filter === 'active',
 				matchOrdersCount: getOrdersLengthByFilter('pending-progress'),
 			},
 			{
-				href: '/done-orders',
 				label: 'Done',
+				id: 'done',
 				icon: statusMap['done'].icon,
-				active: pathname === '/done-orders',
+				active: filter === 'done',
 				matchOrdersCount: getOrdersLengthByFilter('done'),
 			},
 			{
-				href: '/canceled-orders',
 				label: 'Canceled',
+				id: 'canceled',
 				icon: statusMap['canceled'].icon,
-				active: pathname === '/canceled-orders',
+				active: filter === 'canceled',
 				matchOrdersCount: getOrdersLengthByFilter('canceled'),
 			},
 		],
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[pathname, orders]
+		[filter, orders]
 	)
 
 	const [isModalOpen, setIsModalOpen] = useState(false)
@@ -70,13 +71,17 @@ export default function Sidebar() {
 
 				<StyledNavbar>
 					{navLinks.map((props) => (
-						<NavItem key={props.href} {...props} />
+						<NavItem
+							key={props.label}
+							isFilter
+							{...props}
+							onClick={() => changeFilter(props.id as FilterState)}
+						/>
 					))}
 
 					<StyledNavBlankSpace />
 
 					<NavItem
-						isButton
 						label='New order'
 						onClick={() => setIsModalOpen(true)}
 						icon={<BsFillClipboardPlusFill />}

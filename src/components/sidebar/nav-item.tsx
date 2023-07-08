@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { styled } from 'styled-components'
 
 const StyledBaseNavItem = styled.div`
@@ -59,24 +58,22 @@ const StyledIconBox = styled.div`
 `
 
 interface Props {
-	href?: string
 	label: string
 	icon: React.ReactNode
 	active?: boolean
-	isButton?: boolean
-	onClick?: () => void
+	onClick: () => void
 	matchOrdersCount?: number
+	isFilter?: boolean
 }
 export default function NavItem({
-	href,
 	label,
 	icon,
 	active,
-	isButton = false,
 	onClick,
 	matchOrdersCount,
+	isFilter,
 }: Props) {
-	if (isButton && !href) {
+	if (!isFilter) {
 		return (
 			<button onClick={onClick}>
 				<StyledBaseNavItem>
@@ -87,7 +84,7 @@ export default function NavItem({
 		)
 	} else
 		return (
-			<Link href={href || '/'}>
+			<button onClick={onClick}>
 				<StyledBaseNavItem data-active={active}>
 					<StyledIconBox>
 						{icon}
@@ -97,6 +94,6 @@ export default function NavItem({
 
 					<StyledActiveIndicator data-active={active} />
 				</StyledBaseNavItem>
-			</Link>
+			</button>
 		)
 }
