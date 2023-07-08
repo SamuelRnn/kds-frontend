@@ -70,6 +70,7 @@ export default function NewOrderFormProvider({ children }: { children: React.Rea
 		}
 		if (action === 'remove') {
 			targetSubGroup = targetSubGroup.filter((str) => str !== payload)
+			previousExistingItem.specialInstructions[subGroup] = targetSubGroup
 		}
 		setOrderItems(orderItemsClone)
 	}

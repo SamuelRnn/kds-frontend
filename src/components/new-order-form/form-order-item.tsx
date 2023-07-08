@@ -70,6 +70,12 @@ const StyledInstructionButton = styled(StyledButton)`
 	height: 100%;
 	& > span {
 		width: 80px;
+		&[data-sub-group='addons'] {
+			color: var(--colors-cambridge-green);
+		}
+		&[data-sub-group='exclusions'] {
+			color: var(--colors-persian-red);
+		}
 	}
 `
 const StyledInstructionsColumn = styled.div`
@@ -250,7 +256,7 @@ export default function FormOrderItem({ item }: Props) {
 							Add
 						</StyledInstructionButton>
 						<StyledInstructionButton type='button' data-text onClick={() => toggleSubGroup()}>
-							Group: <span>{subGroup}</span>
+							Group: <span data-sub-group={subGroup}>{subGroup}</span>
 						</StyledInstructionButton>
 					</StyledInstructionsAdderContainer>
 				)}
