@@ -28,6 +28,8 @@ const StyledOrderActionsContainer = styled.div`
 	margin-top: 1rem;
 `
 const StyledOrderManagementButton = styled(StyledBaseButton)`
+	font-size: 0.875rem;
+	font-weight: bold;
 	&[data-action='start'] {
 		background-color: var(--colors-ucla-blue);
 	}
