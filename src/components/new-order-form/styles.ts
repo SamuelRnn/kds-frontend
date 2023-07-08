@@ -7,17 +7,18 @@ export const StyledTitleBar = styled.div`
 export const StyledFormLayout = styled.div`
 	display: flex;
 	padding: 1rem;
-	gap: 2rem;
-	height: 10%;
+	gap: 1rem;
 	overflow-y: hidden;
 `
+
 export const StyledFirstColumn = styled.div`
-	flex-grow: 1;
 	display: flex;
+	flex-grow: 1;
 	flex-direction: column;
 	gap: 2rem;
 `
 export const StyledSecondColumn = styled.div`
+	min-width: 240px;
 	overflow-y: auto;
 `
 

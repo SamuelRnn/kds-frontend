@@ -28,7 +28,7 @@ const StyledSeparator = styled.div`
 
 const StyledItemNameContainer = styled(StyledSectionContainer)`
 	padding: 0 1rem;
-	width: 360px;
+	width: 300px;
 	& > p {
 		text-overflow: ellipsis;
 		overflow: hidden;
