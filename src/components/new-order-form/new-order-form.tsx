@@ -3,8 +3,10 @@ import TableSelector from './table-selector'
 import MenuSelector from './menu-selector'
 import {
 	StyledFirstColumn,
+	StyledForm,
 	StyledFormLayout,
 	StyledLabel,
+	StyledModalControls,
 	StyledOrderSection,
 	StyledSecondColumn,
 	StyledSection,
@@ -13,56 +15,63 @@ import {
 import { forwardRef, useState } from 'react'
 import { MenuItem, OrderItem } from '@/interfaces/order.interface'
 import OrderExtrasSelector from './order-extras-selector'
-import { styled } from 'styled-components'
+import { StyledBaseButton } from '../_common/common-styles'
+import {
+	createNewOrderItemFromMenuItem,
+	findPreviousExistingOrderItemById,
+	generateRandomOrderId,
+} from './helpers'
+import useOrdersStore from '@/hooks/use-orders-store'
 
-const StyledForm = styled.form`
-	width: min(95%, 1200px);
-	background-color: var(--colors-lightning-black-800);
-	margin: 0 auto;
-	border-radius: var(--radius-box);
-	max-height: calc(100vh - 2rem);
-	overflow-y: hidden;
-	border: 1px solid var(--colors-lightning-black-700);
-	display: flex;
-	flex-direction: column;
-`
+interface Props {
+	closeModal: () => void
+}
 
-interface Props {}
+function NewOrderForm({ closeModal }: Props, ref: React.Ref<HTMLFormElement>) {
+	const { addOrder } = useOrdersStore()
 
-function NewOrderForm({}: Props, ref: React.Ref<HTMLFormElement>) {
-	const MAX_TABLES: number = 15
-
+	const MAX_TABLES: number = 14
 	const [orderItems, setOrderItems] = useState<OrderItem[]>([])
 	const [tableNumber, setTableNumber] = useState<null | number>(null)
 
 	const onItemAdd = (item: MenuItem) => {
 		let orderItemsClone = [...orderItems]
-
-		const previousExistingItem = orderItemsClone.find((currentItem) => {
-			return currentItem.id === item.id
-		})
+		const previousExistingItem = findPreviousExistingOrderItemById(orderItemsClone, item.id)
 
 		if (previousExistingItem) {
 			previousExistingItem.quantity++
 		} else {
-			const newOrderItem: OrderItem = {
-				id: item.id,
-				name: item.name,
-				quantity: 1,
-				specialInstructions: {
-					addons: [],
-					exclusions: [],
-				},
-			}
+			const newOrderItem = createNewOrderItemFromMenuItem(item)
 			orderItemsClone.push(newOrderItem)
 		}
 
 		setOrderItems(orderItemsClone)
 	}
+	const onSubmit = (event: React.FormEvent) => {
+		event.preventDefault()
+		if (!tableNumber) return
+		if (!orderItems.length) return
 
+		addOrder({
+			id: generateRandomOrderId(),
+			items: orderItems,
+			orderTime: new Date().toISOString(),
+			status: 'pending',
+			table: tableNumber,
+		})
+		closeModal()
+	}
 	return (
-		<StyledForm ref={ref}>
-			<StyledTitleBar>aqui va el Titulo</StyledTitleBar>
+		<StyledForm ref={ref} onSubmit={onSubmit}>
+			<StyledTitleBar>
+				<p>New Order</p>
+				<StyledModalControls>
+					<StyledBaseButton type='button' onClick={closeModal}>
+						Cancel
+					</StyledBaseButton>
+					<StyledBaseButton type='submit'>Create New Order</StyledBaseButton>
+				</StyledModalControls>
+			</StyledTitleBar>
 
 			<StyledFormLayout>
 				{/* first column */}

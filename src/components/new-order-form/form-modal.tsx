@@ -29,7 +29,7 @@ export default function Form({ closeModal }: Props) {
 
 	return (
 		<StyledFormContainer onClick={onClickOutside}>
-			<NewOrderFormWithRef ref={modalRef} />
+			<NewOrderFormWithRef ref={modalRef} closeModal={closeModal} />
 		</StyledFormContainer>
 	)
 }

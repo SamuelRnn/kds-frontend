@@ -1,4 +1,4 @@
-import { OrderItem, OrderStatus } from '@/interfaces/order.interface'
+import { OrderInterface, OrderItem, OrderStatus } from '@/interfaces/order.interface'
 import { ordersActions } from '@/store/slices/orders-slice'
 import { AppDispatch, RootState } from '@/store/store'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,7 +9,7 @@ export default function useOrdersStore() {
 
 	return {
 		orders,
-		addOrder: (order: OrderItem) => dispatch(ordersActions.addOrder(order)),
+		addOrder: (order: OrderInterface) => dispatch(ordersActions.addOrder(order)),
 		changeOrderStatus: (orderId: string, newStatus: OrderStatus) =>
 			dispatch(ordersActions.changeOrderStatus({ newStatus, orderId })),
 	}

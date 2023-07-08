@@ -1,4 +1,4 @@
-import { OrderInterface, OrderItem, OrderStatus } from '@/interfaces/order.interface'
+import { OrderInterface, OrderStatus } from '@/interfaces/order.interface'
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { orders } from '../mock-data'
@@ -15,7 +15,9 @@ export const ordersSlice = createSlice({
 	name: 'counter',
 	initialState,
 	reducers: {
-		addOrder: (state, action: PayloadAction<OrderItem>) => {},
+		addOrder: (state, action: PayloadAction<OrderInterface>) => {
+			state.orders.push(action.payload)
+		},
 		changeOrderStatus: (
 			state,
 			action: PayloadAction<{ orderId: string; newStatus: OrderStatus }>

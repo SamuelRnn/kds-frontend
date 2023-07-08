@@ -1,8 +1,37 @@
 import { styled } from 'styled-components'
 
+export const StyledForm = styled.form`
+	width: min(95%, 1200px);
+	background-color: var(--colors-lightning-black-800);
+	margin: 0 auto;
+	border-radius: var(--radius-box);
+	max-height: calc(100vh - 2rem);
+	overflow-y: hidden;
+	border: 1px solid var(--colors-lightning-black-700);
+	display: flex;
+	flex-direction: column;
+`
+export const StyledModalControls = styled.div`
+	display: flex;
+	gap: 1rem;
+
+	& > button {
+		padding: 0.25rem 1rem;
+
+		&[type='button'] {
+			background-color: var(--colors-persian-red);
+		}
+		&[type='submit'] {
+			background-color: var(--colors-ucla-blue);
+		}
+	}
+`
 export const StyledTitleBar = styled.div`
 	padding: 0.75rem 1rem;
 	border-bottom: 1px solid var(--colors-lightning-black-700);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 `
 export const StyledFormLayout = styled.div`
 	display: flex;
