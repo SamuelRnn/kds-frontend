@@ -4,7 +4,7 @@ import AppLayout from '@/components/app-layout'
 import { styled } from 'styled-components'
 import { Provider } from 'react-redux'
 import { store } from '@/store/store'
-import FormModal from '@/components/new-order-form/form-modal'
+
 interface Props {
 	children: React.ReactNode
 }
@@ -29,9 +29,7 @@ export default function Layout({ children }: Props) {
 				</StyledPageContainer>
 			</AppLayout>
 
-			<StyledPortalContainer id='portal'>
-				<FormModal />
-			</StyledPortalContainer>
+			<StyledPortalContainer id='portal' />
 		</Provider>
 	)
 }

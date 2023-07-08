@@ -9,6 +9,7 @@ const StyledContainer = styled.div`
 
 const StyledItemWrapper = styled.div`
 	display: flex;
+	width: 100%;
 	gap: 1rem;
 	margin-right: 1rem;
 `
@@ -26,9 +27,8 @@ const StyledSeparator = styled.div`
 `
 
 const StyledItemNameContainer = styled(StyledSectionContainer)`
-	flex-grow: 1;
 	padding: 0 1rem;
-
+	width: 360px;
 	& > p {
 		text-overflow: ellipsis;
 		overflow: hidden;
@@ -62,6 +62,7 @@ const StyledInstructionButtonsContainer = styled(StyledSectionContainer)`
 const StyledInstructionButton = styled(StyledBaseButton)`
 	height: 100%;
 	padding: 0 0.75rem;
+	white-space: nowrap;
 
 	&[data-instruction='addon'] {
 		background-color: var(--colors-cambridge-green);
