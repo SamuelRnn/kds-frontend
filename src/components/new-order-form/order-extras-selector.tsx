@@ -6,7 +6,7 @@ import useOrderFormContext from '@/hooks/use-new-order-context'
 const StyledOrderPreviewContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 0.75rem;
+	gap: 1.25rem;
 `
 
 export default function OrderExtrasSelector() {

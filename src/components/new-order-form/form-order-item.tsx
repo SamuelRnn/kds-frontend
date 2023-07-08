@@ -1,17 +1,19 @@
 import { OrderItem } from '@/interfaces/order.interface'
 import { styled } from 'styled-components'
 import { StyledBaseButton } from '../_common/common-styles'
-import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import { AiFillDelete, AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
+import useOrderFormContext from '@/hooks/use-new-order-context'
 
 const StyledContainer = styled.div`
-	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-right: 1rem;
 `
 
 const StyledItemWrapper = styled.div`
 	display: flex;
 	width: 100%;
-	gap: 1rem;
-	margin-right: 1rem;
+	gap: 0.75rem;
 `
 const StyledSectionContainer = styled.div`
 	background-color: var(--colors-lightning-black-700);
@@ -27,6 +29,7 @@ const StyledSeparator = styled.div`
 `
 
 const StyledItemNameContainer = styled(StyledSectionContainer)`
+	flex-grow: 1;
 	padding: 0 1rem;
 	width: 300px;
 	& > p {
@@ -39,37 +42,29 @@ const StyledQuantityContainer = styled(StyledSectionContainer)`
 	background-color: var(--colors-ucla-blue);
 
 	& span {
+		user-select: none;
 		font-weight: bold;
 		width: 3rem;
 		text-align: center;
 	}
 `
-const StyledQuantityButton = styled(StyledBaseButton)`
-	background-color: transparent;
-	padding: 0 0.75rem;
+const StyledButton = styled(StyledBaseButton)`
+	background-color: var(--colors-ucla-blue);
+	height: 3.2rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	aspect-ratio: 1/1;
 
-	& svg {
+	& > svg {
 		font-size: 1.25rem;
-		margin: 0.75rem;
 	}
-`
-
-const StyledInstructionButtonsContainer = styled(StyledSectionContainer)`
-	padding: 0;
-	background-color: transparent;
-	gap: 1rem;
-`
-const StyledInstructionButton = styled(StyledBaseButton)`
-	height: 100%;
-	padding: 0 0.75rem;
-	white-space: nowrap;
-
-	&[data-instruction='addon'] {
-		background-color: var(--colors-cambridge-green);
-		color: var(--colors-lightning-black-800);
-	}
-	&[data-instruction='exclusion'] {
+	&[data-action='remove'] {
 		background-color: var(--colors-persian-red);
+	}
+	&[data-text='true'] {
+		aspect-ratio: auto;
+		white-space: nowrap;
 	}
 `
 interface Props {
@@ -77,6 +72,7 @@ interface Props {
 }
 
 export default function FormOrderItem({ item }: Props) {
+	const { removeItemFromOrder, changeItemQuantity } = useOrderFormContext()
 	return (
 		<StyledContainer>
 			{/* first line */}
@@ -90,25 +86,27 @@ export default function FormOrderItem({ item }: Props) {
 
 					<StyledSeparator />
 
-					<StyledQuantityButton type='button'>
+					<StyledButton type='button' onClick={() => changeItemQuantity(item.id, 'increase')}>
 						<AiOutlinePlus />
-					</StyledQuantityButton>
+					</StyledButton>
 
 					<StyledSeparator />
 
-					<StyledQuantityButton type='button'>
+					<StyledButton type='button' onClick={() => changeItemQuantity(item.id, 'decrease')}>
 						<AiOutlineMinus />
-					</StyledQuantityButton>
+					</StyledButton>
 				</StyledQuantityContainer>
 
-				<StyledInstructionButtonsContainer>
-					<StyledInstructionButton type='button' data-instruction='addon'>
-						include addon
-					</StyledInstructionButton>
-					<StyledInstructionButton type='button' data-instruction='exclusion'>
-						include exclusion
-					</StyledInstructionButton>
-				</StyledInstructionButtonsContainer>
+				<StyledButton type='button' data-text>
+					Add instruction
+				</StyledButton>
+				<StyledButton
+					type='button'
+					data-action='remove'
+					onClick={() => removeItemFromOrder(item.id)}
+				>
+					<AiFillDelete />
+				</StyledButton>
 			</StyledItemWrapper>
 
 			{/* second line (addons) */}

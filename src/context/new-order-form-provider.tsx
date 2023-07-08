@@ -37,8 +37,23 @@ export default function NewOrderFormProvider({ children }: { children: React.Rea
 
 		setOrderItems(orderItemsClone)
 	}
-	const removeItemFromOrder = (itemId: string) => {}
-	const changeItemQuantity = (itemId: string, action: 'increase' | 'decrease') => {}
+	const removeItemFromOrder = (itemId: string) => {
+		let orderItemsClone = [...orderItems]
+		setOrderItems(orderItemsClone.filter((item) => item.id !== itemId))
+	}
+	const changeItemQuantity = (itemId: string, action: 'increase' | 'decrease') => {
+		let orderItemsClone = [...orderItems]
+		const previousExistingItem = findPreviousExistingOrderItemById(orderItemsClone, itemId)
+		if (!previousExistingItem) return
+		if (action === 'increase') {
+			previousExistingItem.quantity++
+		}
+		if (action === 'decrease') {
+			if (previousExistingItem.quantity <= 1) return
+			else previousExistingItem.quantity--
+		}
+		setOrderItems(orderItemsClone)
+	}
 	const addAddon = (addon: string) => {}
 	const removeAddon = (addon: string) => {}
 	const addExclusion = (exclusion: string) => {}
