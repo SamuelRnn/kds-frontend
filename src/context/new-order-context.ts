@@ -9,10 +9,10 @@ export interface FormContext {
 	addNewItemToOrder: (item: MenuItem) => void
 	removeItemFromOrder: (itemId: string) => void
 	changeItemQuantity: (itemId: string, action: 'increase' | 'decrease') => void
-	addAddon: (addon: string) => void
-	removeAddon: (addon: string) => void
-	addExclusion: (exclusion: string) => void
-	removeExclusion: (exclusion: string) => void
+	addAddon: (itemId: string, addon: string) => void
+	removeAddon: (itemId: string, addon: string) => void
+	addExclusion: (itemId: string, exclusion: string) => void
+	removeExclusion: (itemId: string, exclusion: string) => void
 	submitHandler: (event: React.FormEvent<HTMLFormElement>, callback: () => void) => void
 }
 

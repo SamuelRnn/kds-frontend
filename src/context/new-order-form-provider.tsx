@@ -54,10 +54,38 @@ export default function NewOrderFormProvider({ children }: { children: React.Rea
 		}
 		setOrderItems(orderItemsClone)
 	}
-	const addAddon = (addon: string) => {}
-	const removeAddon = (addon: string) => {}
-	const addExclusion = (exclusion: string) => {}
-	const removeExclusion = (exclusion: string) => {}
+	const editInstructions = (
+		itemId: string,
+		subGroup: 'addons' | 'exclusions',
+		action: 'add' | 'remove',
+		payload: string
+	) => {
+		let orderItemsClone = [...orderItems]
+		const previousExistingItem = findPreviousExistingOrderItemById(orderItemsClone, itemId)
+		if (!previousExistingItem) return
+
+		let targetSubGroup = previousExistingItem.specialInstructions[subGroup]
+		if (action === 'add') {
+			targetSubGroup.push(payload)
+		}
+		if (action === 'remove') {
+			targetSubGroup = targetSubGroup.filter((str) => str !== payload)
+		}
+		setOrderItems(orderItemsClone)
+	}
+
+	const addAddon = (itemId: string, addon: string) => {
+		editInstructions(itemId, 'addons', 'add', addon)
+	}
+	const removeAddon = (itemId: string, addon: string) => {
+		editInstructions(itemId, 'addons', 'remove', addon)
+	}
+	const addExclusion = (itemId: string, exclusion: string) => {
+		editInstructions(itemId, 'exclusions', 'add', exclusion)
+	}
+	const removeExclusion = (itemId: string, exclusion: string) => {
+		editInstructions(itemId, 'exclusions', 'remove', exclusion)
+	}
 
 	//submit handler
 	const submitHandler = (event: React.FormEvent<HTMLFormElement>, callback: () => void) => {
