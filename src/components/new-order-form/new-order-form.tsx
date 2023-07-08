@@ -3,7 +3,6 @@ import TableSelector from './table-selector'
 import MenuSelector from './menu-selector'
 import {
 	StyledFirstColumn,
-	StyledForm,
 	StyledFormLayout,
 	StyledLabel,
 	StyledOrderSection,
@@ -11,13 +10,26 @@ import {
 	StyledSection,
 	StyledTitleBar,
 } from './styles'
-import { useState } from 'react'
+import { forwardRef, useState } from 'react'
 import { MenuItem, OrderItem } from '@/interfaces/order.interface'
-import AddonsSelector from './addons-selector'
+import OrderExtrasSelector from './order-extras-selector'
+import { styled } from 'styled-components'
+
+const StyledForm = styled.form`
+	width: min(95%, 1200px);
+	background-color: var(--colors-lightning-black-800);
+	margin: 0 auto;
+	border-radius: var(--radius-box);
+	max-height: calc(100vh - 2rem);
+	overflow-y: hidden;
+	border: 1px solid var(--colors-lightning-black-700);
+	display: flex;
+	flex-direction: column;
+`
 
 interface Props {}
 
-export default function NewOrderForm({}: Props) {
+function NewOrderForm({}: Props, ref: React.Ref<HTMLFormElement>) {
 	const MAX_TABLES: number = 15
 
 	const [orderItems, setOrderItems] = useState<OrderItem[]>([])
@@ -49,7 +61,7 @@ export default function NewOrderForm({}: Props) {
 	}
 
 	return (
-		<StyledForm>
+		<StyledForm ref={ref}>
 			<StyledTitleBar>aqui va el Titulo</StyledTitleBar>
 
 			<StyledFormLayout>
@@ -66,7 +78,7 @@ export default function NewOrderForm({}: Props) {
 
 					<StyledOrderSection>
 						<StyledLabel>Your Order</StyledLabel>
-						<AddonsSelector items={orderItems} />
+						<OrderExtrasSelector items={orderItems} />
 					</StyledOrderSection>
 				</StyledFirstColumn>
 
@@ -82,3 +94,6 @@ export default function NewOrderForm({}: Props) {
 		</StyledForm>
 	)
 }
+
+const NewOrderFormWithRef = forwardRef(NewOrderForm)
+export default NewOrderFormWithRef

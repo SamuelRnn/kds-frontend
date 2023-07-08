@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
-import NewOrderForm from './new-order-form'
+import NewOrderFormWithRef from './new-order-form'
+import { useRef } from 'react'
 
 const StyledFormContainer = styled.div`
 	position: fixed;
@@ -13,12 +14,22 @@ const StyledFormContainer = styled.div`
 	z-index: 50;
 `
 
-interface Props {}
+interface Props {
+	closeModal: () => void
+}
+export default function Form({ closeModal }: Props) {
+	const modalRef = useRef<HTMLFormElement | null>(null)
 
-export default function FormModal({}: Props) {
+	const onClickOutside = (event: React.MouseEvent<HTMLDivElement>) => {
+		if (!modalRef.current) return
+		if (!modalRef.current.contains(event.target as Node)) {
+			closeModal()
+		}
+	}
+
 	return (
-		<StyledFormContainer>
-			<NewOrderForm />
+		<StyledFormContainer onClick={onClickOutside}>
+			<NewOrderFormWithRef ref={modalRef} />
 		</StyledFormContainer>
 	)
 }

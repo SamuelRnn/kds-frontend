@@ -1,16 +1,5 @@
 import { styled } from 'styled-components'
 
-export const StyledForm = styled.form`
-	width: min(95%, 1400px);
-	background-color: var(--colors-lightning-black-800);
-	margin: 0 auto;
-	border-radius: var(--radius-box);
-	max-height: calc(100vh - 2rem);
-	overflow-y: hidden;
-	border: 1px solid var(--colors-lightning-black-700);
-	display: flex;
-	flex-direction: column;
-`
 export const StyledTitleBar = styled.div`
 	padding: 0.75rem 1rem;
 	border-bottom: 1px solid var(--colors-lightning-black-700);
