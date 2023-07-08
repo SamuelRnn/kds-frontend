@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { styled } from 'styled-components'
 import { StyledBaseButton } from '../_common/common-styles'
+import useOrderFormContext from '@/hooks/use-new-order-context'
 
 const StyledTableSelectorWrapper = styled.div`
 	display: grid;
@@ -21,23 +22,18 @@ const StyledButton = styled(StyledBaseButton)`
 	}
 `
 
-interface Props {
-	maxTables: number
-	selectedNumber: number | null
-	onSelect: (tableNumber: number) => void
-}
-
-export default function TableSelector({ maxTables, onSelect, selectedNumber }: Props) {
+export default function TableSelector() {
+	const { tables, tableNumber: selectedTable, selectTableNumber } = useOrderFormContext()
 	return (
 		<StyledTableSelectorWrapper>
-			{Array.from({ length: maxTables }, (_, index) => index + 1).map((tableNumber) => (
+			{tables.map((table) => (
 				<StyledButton
-					key={tableNumber}
-					onClick={() => selectedNumber !== tableNumber && onSelect(tableNumber)}
-					data-selected={selectedNumber === tableNumber}
+					key={table}
+					onClick={() => selectTableNumber(table)}
+					data-selected={selectedTable === table}
 					type='button'
 				>
-					Table {tableNumber}
+					Table {table}
 				</StyledButton>
 			))}
 		</StyledTableSelectorWrapper>

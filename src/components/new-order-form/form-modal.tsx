@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 import NewOrderFormWithRef from './new-order-form'
 import { useRef } from 'react'
+import NewOrderFormProvider from '@/context/new-order-form-provider'
 
 const StyledFormContainer = styled.div`
 	position: fixed;
@@ -39,7 +40,9 @@ export default function Form({ closeModal }: Props) {
 
 	return (
 		<StyledFormContainer onClick={onClickOutside}>
-			<NewOrderFormWithRef ref={modalRef} closeModal={closeModal} />
+			<NewOrderFormProvider>
+				<NewOrderFormWithRef ref={modalRef} closeModal={closeModal} />
+			</NewOrderFormProvider>
 		</StyledFormContainer>
 	)
 }

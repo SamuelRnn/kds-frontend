@@ -1,6 +1,7 @@
 import { styled } from 'styled-components'
 import { StyledBaseButton } from '../_common/common-styles'
-import { MenuItem } from '@/interfaces/order.interface'
+import { menu } from '@public/menu.json'
+import useOrderFormContext from '@/hooks/use-new-order-context'
 
 const StyledMenuSelectorContainer = styled.div`
 	display: flex;
@@ -13,16 +14,16 @@ const StyledMenuButton = styled(StyledBaseButton)`
 	padding: 0.75rem;
 `
 
-interface Props {
-	menu: MenuItem[]
-	onItemAdd: (menuItem: MenuItem) => void
-}
-
-export default function MenuSelector({ menu, onItemAdd }: Props) {
+export default function MenuSelector() {
+	const { addNewItemToOrder } = useOrderFormContext()
 	return (
 		<StyledMenuSelectorContainer>
 			{menu.map((menuItem) => (
-				<StyledMenuButton key={menuItem.id} onClick={() => onItemAdd(menuItem)} type='button'>
+				<StyledMenuButton
+					key={menuItem.id}
+					onClick={() => addNewItemToOrder(menuItem)}
+					type='button'
+				>
 					{menuItem.name}
 				</StyledMenuButton>
 			))}

@@ -73,18 +73,18 @@ export default function OrderCard({ orderData }: Props) {
 
 			<StyledOrderActionsContainer>
 				<StyledOrderManagementButton
-					onClick={startOrder}
-					data-action='start'
-					disabled={orderData.status === 'progress'}
-				>
-					{'done-canceled'.includes(orderData.status) ? 'Restart' : 'Start'} order
-				</StyledOrderManagementButton>
-				<StyledOrderManagementButton
 					onClick={cancelOrder}
 					data-action='cancel'
 					disabled={'done-canceled'.includes(orderData.status)}
 				>
 					Cancel order
+				</StyledOrderManagementButton>
+				<StyledOrderManagementButton
+					onClick={startOrder}
+					data-action='start'
+					disabled={orderData.status === 'progress'}
+				>
+					{'done-canceled'.includes(orderData.status) ? 'Restart' : 'Start'} order
 				</StyledOrderManagementButton>
 				<StyledOrderManagementButton
 					onClick={markOrderAsReady}

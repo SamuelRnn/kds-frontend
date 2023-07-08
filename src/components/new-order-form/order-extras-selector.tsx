@@ -1,6 +1,7 @@
 import { OrderItem } from '@/interfaces/order.interface'
 import { styled } from 'styled-components'
 import FormOrderItem from './form-order-item'
+import useOrderFormContext from '@/hooks/use-new-order-context'
 
 const StyledOrderPreviewContainer = styled.div`
 	display: flex;
@@ -8,11 +9,8 @@ const StyledOrderPreviewContainer = styled.div`
 	gap: 0.75rem;
 `
 
-interface Props {
-	items: OrderItem[]
-}
-
-export default function OrderExtrasSelector({ items }: Props) {
+export default function OrderExtrasSelector() {
+	const { orderItems: items } = useOrderFormContext()
 	return (
 		<StyledOrderPreviewContainer>
 			{items.length ? (
