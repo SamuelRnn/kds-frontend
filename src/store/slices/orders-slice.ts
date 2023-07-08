@@ -1,7 +1,6 @@
 import { OrderInterface, OrderStatus } from '@/interfaces/order.interface'
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { orders } from '../mock-data'
 
 export interface OrdersState {
 	orders: OrderInterface[]
@@ -21,7 +20,12 @@ export const ordersSlice = createSlice({
 		changeOrderStatus: (
 			state,
 			action: PayloadAction<{ orderId: string; newStatus: OrderStatus }>
-		) => {},
+		) => {
+			const foundOrder = state.orders.find((order) => order.id === action.payload.orderId)
+			if (foundOrder) {
+				foundOrder.status = action.payload.newStatus
+			}
+		},
 	},
 })
 

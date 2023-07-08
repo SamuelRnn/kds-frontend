@@ -1,10 +1,29 @@
 import Link from 'next/link'
 import { styled } from 'styled-components'
-import { StyledBaseNavItem } from '../_common/common-styles'
 
-const StyledNavItem = styled(StyledBaseNavItem)`
+const StyledBaseNavItem = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 2rem;
+	gap: 0.3rem;
+	padding: 0.5rem;
+	position: relative;
+	transition: color ease-out 80ms;
+	color: var(--colors-raisin-gray);
+
+	& span {
+		font-size: 1rem;
+	}
+
+	&:hover {
+		transition: background-color ease-out 120ms;
+		background-color: rgb(200 200 255 / 0.05);
+	}
+
 	&[data-active='true'] {
 		color: var(--colors-ghost-white);
+		font-weight: bold;
 	}
 `
 const StyledActiveIndicator = styled.div`
@@ -22,6 +41,22 @@ const StyledActiveIndicator = styled.div`
 		opacity: 1;
 	}
 `
+const StyledIconBox = styled.div`
+	display: flex;
+	gap: 0.25rem;
+	align-items: center;
+	position: relative;
+
+	& > span[title='count'] {
+		position: absolute;
+		top: 50%;
+		left: 60%;
+		background-color: var(--colors-lightning-black-700);
+		border-radius: var(--radius-box);
+		padding: 0 0.4rem;
+		text-align: center;
+	}
+`
 
 interface Props {
 	href?: string
@@ -30,8 +65,17 @@ interface Props {
 	active?: boolean
 	isButton?: boolean
 	onClick?: () => void
+	matchOrdersCount?: number
 }
-export default function NavItem({ href, label, icon, active, isButton = false, onClick }: Props) {
+export default function NavItem({
+	href,
+	label,
+	icon,
+	active,
+	isButton = false,
+	onClick,
+	matchOrdersCount,
+}: Props) {
 	if (isButton && !href) {
 		return (
 			<button onClick={onClick}>
@@ -44,12 +88,15 @@ export default function NavItem({ href, label, icon, active, isButton = false, o
 	} else
 		return (
 			<Link href={href || '/'}>
-				<StyledNavItem data-active={active}>
-					{icon}
+				<StyledBaseNavItem data-active={active}>
+					<StyledIconBox>
+						{icon}
+						<span title='count'>{matchOrdersCount}</span>
+					</StyledIconBox>
 					<span>{label}</span>
 
 					<StyledActiveIndicator data-active={active} />
-				</StyledNavItem>
+				</StyledBaseNavItem>
 			</Link>
 		)
 }

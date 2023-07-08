@@ -1,3 +1,4 @@
+import { OrderStatus } from '@/interfaces/order.interface'
 import { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 
@@ -8,16 +9,21 @@ const StyledSpan = styled.span`
 
 interface Props {
 	orderDate: string
+	status: OrderStatus
 }
 
-export default function Counter({ orderDate }: Props) {
+export default function Counter({ orderDate, status }: Props) {
 	const orderDateRef = useRef(new Date(orderDate).getTime())
 
 	const [seconds, setseconds] = useState(
-		Math.floor((new Date().getTime() - orderDateRef.current) / 1000)
+		'done-canceled'.includes(status)
+			? 0
+			: Math.floor((new Date().getTime() - orderDateRef.current) / 1000)
 	)
 
 	useEffect(() => {
+		if ('done-canceled'.includes(status)) return
+
 		const interval = setInterval(() => {
 			setseconds((prevSeconds) => prevSeconds + 1)
 		}, 1000)
@@ -25,7 +31,7 @@ export default function Counter({ orderDate }: Props) {
 		return () => {
 			clearInterval(interval)
 		}
-	}, [seconds])
+	}, [seconds, status])
 
 	return <StyledSpan title='time elapsed'>{formatTime(seconds)}</StyledSpan>
 }
