@@ -8,5 +8,11 @@ export default function Home() {
 		return order.status !== 'canceled' && order.status !== 'done'
 	}
 
-	return <PageContent title='Current active orders' filterCondition={filterCondition} />
+	return (
+		<PageContent
+			title='Current active orders'
+			filterCondition={filterCondition}
+			emptyMessage='no active orders yet'
+		/>
+	)
 }

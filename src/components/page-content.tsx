@@ -8,9 +8,10 @@ import { OrderInterface } from '@/interfaces/order.interface'
 interface Props {
 	title: string
 	filterCondition: (order: OrderInterface) => boolean
+	emptyMessage: string
 }
 
-export default function PageContent({ title, filterCondition }: Props) {
+export default function PageContent({ title, filterCondition, emptyMessage }: Props) {
 	const { orders } = useOrdersStore()
 
 	const activeOrders = orders.filter(filterCondition)
@@ -25,7 +26,7 @@ export default function PageContent({ title, filterCondition }: Props) {
 						<OrderCard key={order.id} orderData={order} />
 					))
 				) : (
-					<StyledEmptyOrdersScreen>No active orders yet</StyledEmptyOrdersScreen>
+					<StyledEmptyOrdersScreen>{emptyMessage}</StyledEmptyOrdersScreen>
 				)}
 			</OrdersContainer>
 		</>

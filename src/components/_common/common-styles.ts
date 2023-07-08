@@ -13,10 +13,6 @@ export const StyledPageTitle = styled.h1`
 	}
 `
 export const StyledEmptyOrdersScreen = styled.div`
-	display: grid;
-	place-content: center;
-	column-span: all;
-	height: 100%;
 	color: var(--colors-delft-blue);
 `
 export const StyledBaseButton = styled.button`

@@ -8,7 +8,7 @@ export interface OrdersState {
 }
 
 const initialState: OrdersState = {
-	orders: orders || [],
+	orders: [],
 }
 
 export const ordersSlice = createSlice({
