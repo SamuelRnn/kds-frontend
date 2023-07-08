@@ -37,6 +37,11 @@ const StyledOrderManagementButton = styled(StyledBaseButton)`
 	&[data-action='mark-ready'] {
 		background-color: var(--colors-cambridge-green-dark);
 	}
+	&:disabled {
+		background-color: var(--colors-lightning-black-700);
+		opacity: 0.6;
+		pointer-events: none;
+	}
 `
 
 interface Props {
@@ -45,9 +50,12 @@ interface Props {
 export default function OrderCard({ orderData }: Props) {
 	const { changeOrderStatus } = useOrdersStore()
 
-	const startOrder = () => changeOrderStatus(orderData.id, 'progress')
-	const cancelOrder = () => changeOrderStatus(orderData.id, 'canceled')
-	const markOrderAsReady = () => changeOrderStatus(orderData.id, 'done')
+	const startOrder = () =>
+		orderData.status !== 'progress' && changeOrderStatus(orderData.id, 'progress')
+	const cancelOrder = () =>
+		orderData.status !== 'canceled' && changeOrderStatus(orderData.id, 'canceled')
+	const markOrderAsReady = () =>
+		orderData.status !== 'done' && changeOrderStatus(orderData.id, 'done')
 
 	return (
 		<StyledOrderCardContainer>
@@ -62,13 +70,25 @@ export default function OrderCard({ orderData }: Props) {
 			<OrderItems items={orderData.items} />
 
 			<StyledOrderActionsContainer>
-				<StyledOrderManagementButton onClick={startOrder} data-action='start'>
-					Start order
+				<StyledOrderManagementButton
+					onClick={startOrder}
+					data-action='start'
+					disabled={orderData.status === 'progress'}
+				>
+					{'done-canceled'.includes(orderData.status) ? 'Restart' : 'Start'} order
 				</StyledOrderManagementButton>
-				<StyledOrderManagementButton onClick={cancelOrder} data-action='cancel'>
+				<StyledOrderManagementButton
+					onClick={cancelOrder}
+					data-action='cancel'
+					disabled={'done-canceled'.includes(orderData.status)}
+				>
 					Cancel order
 				</StyledOrderManagementButton>
-				<StyledOrderManagementButton onClick={markOrderAsReady} data-action='mark-ready'>
+				<StyledOrderManagementButton
+					onClick={markOrderAsReady}
+					data-action='mark-ready'
+					disabled={'done-canceled'.includes(orderData.status)}
+				>
 					Mark as Done
 				</StyledOrderManagementButton>
 			</StyledOrderActionsContainer>
