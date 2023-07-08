@@ -5,33 +5,39 @@ export const StyledForm = styled.form`
 	background-color: var(--colors-lightning-black-800);
 	margin: 0 auto;
 	border-radius: var(--radius-box);
-	height: calc(100vh - 2rem);
+	max-height: calc(100vh - 2rem);
 	overflow-y: hidden;
+	border: 1px solid var(--colors-lightning-black-700);
+	display: flex;
+	flex-direction: column;
 `
 export const StyledTitleBar = styled.div`
 	padding: 0.75rem 1rem;
 	border-bottom: 1px solid var(--colors-lightning-black-700);
 `
 export const StyledFormLayout = styled.div`
-	display: grid;
+	display: flex;
 	padding: 1rem;
-	grid-template-columns: 3fr 1fr;
-	gap: 1.5rem;
-	height: 85%;
+	gap: 2rem;
+	height: 10%;
 	overflow-y: hidden;
 `
-export const StyledLayoutColumnContainer = styled.div`
-	border: 1px solid white;
+export const StyledFirstColumn = styled.div`
+	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
-	row-gap: 1.25rem;
-	height: 100%;
+	gap: 2rem;
 `
-export const StyledMenuContainer = styled.div`
+export const StyledSecondColumn = styled.div`
 	overflow-y: auto;
 `
 
 export const StyledSection = styled.section``
+
+export const StyledOrderSection = styled.section`
+	overflow-y: scroll;
+	height: 100%;
+`
 export const StyledLabel = styled.p`
 	color: var(--colors-raisin-gray);
 	font-weight: bold;

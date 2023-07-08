@@ -19,3 +19,8 @@ export interface OrderInterface {
 	status: OrderStatus
 	orderTime: string
 }
+
+export interface MenuItem {
+	id: string
+	name: string
+}

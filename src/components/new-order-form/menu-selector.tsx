@@ -1,5 +1,6 @@
 import { styled } from 'styled-components'
 import { StyledBaseButton } from '../_common/common-styles'
+import { MenuItem } from '@/interfaces/order.interface'
 
 const StyledMenuSelectorContainer = styled.div`
 	display: flex;
@@ -12,21 +13,16 @@ const StyledMenuButton = styled(StyledBaseButton)`
 	padding: 0.75rem;
 `
 
-interface MenuItem {
-	id: string
-	name: string
-}
-
 interface Props {
 	menu: MenuItem[]
-	onSelect: (menuItem: MenuItem) => void
+	onItemAdd: (menuItem: MenuItem) => void
 }
 
-export default function MenuSelector({ menu, onSelect }: Props) {
+export default function MenuSelector({ menu, onItemAdd }: Props) {
 	return (
 		<StyledMenuSelectorContainer>
 			{menu.map((menuItem) => (
-				<StyledMenuButton key={menuItem.id} onClick={() => onSelect(menuItem)} type='button'>
+				<StyledMenuButton key={menuItem.id} onClick={() => onItemAdd(menuItem)} type='button'>
 					{menuItem.name}
 				</StyledMenuButton>
 			))}

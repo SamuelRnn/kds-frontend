@@ -2,16 +2,18 @@ import { menu } from '@public/menu.json'
 import TableSelector from './table-selector'
 import MenuSelector from './menu-selector'
 import {
+	StyledFirstColumn,
 	StyledForm,
 	StyledFormLayout,
 	StyledLabel,
-	StyledLayoutColumnContainer,
-	StyledMenuContainer,
+	StyledOrderSection,
+	StyledSecondColumn,
 	StyledSection,
 	StyledTitleBar,
 } from './styles'
 import { useState } from 'react'
-import { OrderItem } from '@/interfaces/order.interface'
+import { MenuItem, OrderItem } from '@/interfaces/order.interface'
+import AddonsSelector from './addons-selector'
 
 interface Props {}
 
@@ -21,12 +23,38 @@ export default function NewOrderForm({}: Props) {
 	const [orderItems, setOrderItems] = useState<OrderItem[]>([])
 	const [tableNumber, setTableNumber] = useState<null | number>(null)
 
+	const onItemAdd = (item: MenuItem) => {
+		let orderItemsClone = [...orderItems]
+
+		const previousExistingItem = orderItemsClone.find((currentItem) => {
+			return currentItem.id === item.id
+		})
+
+		if (previousExistingItem) {
+			previousExistingItem.quantity++
+		} else {
+			const newOrderItem: OrderItem = {
+				id: item.id,
+				name: item.name,
+				quantity: 1,
+				specialInstructions: {
+					addons: [],
+					exclusions: [],
+				},
+			}
+			orderItemsClone.push(newOrderItem)
+		}
+
+		setOrderItems(orderItemsClone)
+	}
+
 	return (
 		<StyledForm>
 			<StyledTitleBar>aqui va el Titulo</StyledTitleBar>
 
 			<StyledFormLayout>
-				<StyledLayoutColumnContainer>
+				{/* first column */}
+				<StyledFirstColumn>
 					<StyledSection>
 						<StyledLabel>Select a table</StyledLabel>
 						<TableSelector
@@ -36,19 +64,21 @@ export default function NewOrderForm({}: Props) {
 						/>
 					</StyledSection>
 
-					<StyledSection>
+					<StyledOrderSection>
 						<StyledLabel>Your Order</StyledLabel>
-					</StyledSection>
-				</StyledLayoutColumnContainer>
+						<AddonsSelector items={orderItems} />
+					</StyledOrderSection>
+				</StyledFirstColumn>
 
-				<StyledMenuContainer>
+				{/* second column */}
+				<StyledSecondColumn>
 					<StyledSection>
 						<StyledLabel>Add items to the order</StyledLabel>
-						<MenuSelector menu={menu} onSelect={() => ''} />
+						<MenuSelector menu={menu} onItemAdd={onItemAdd} />
 					</StyledSection>
-				</StyledMenuContainer>
+				</StyledSecondColumn>
 			</StyledFormLayout>
-			<div>here buttons idk</div>
+			{/* <div>here buttons idk</div> */}
 		</StyledForm>
 	)
 }
