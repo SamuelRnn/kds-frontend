@@ -10,6 +10,20 @@ export const StyledForm = styled.form`
 	border: 1px solid var(--colors-lightning-black-700);
 	display: flex;
 	flex-direction: column;
+	animation: modalSlideUp 300ms;
+	animation-timing-function: cubic-bezier(0, 0.92, 0.37, 0.99);
+	animation-fill-mode: forwards;
+
+	@keyframes modalSlideUp {
+		from {
+			transform: translateY(200px);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
+		}
+	}
 `
 export const StyledModalControls = styled.div`
 	display: flex;

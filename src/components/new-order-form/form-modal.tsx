@@ -7,11 +7,21 @@ const StyledFormContainer = styled.div`
 	top: 0;
 	width: 100%;
 	height: 100vh;
-	background-color: rgb(0 0 0 / 0.4);
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 50;
+	animation: backgroundFade 200ms ease-out forwards;
+
+	@keyframes backgroundFade {
+		from {
+			background-color: transparent;
+		}
+		to {
+			background-color: rgb(0 0 0 / 0.5);
+		}
+	}
 `
 
 interface Props {
