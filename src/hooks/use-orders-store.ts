@@ -1,5 +1,5 @@
 import { OrderInterface, OrderStatus } from '@/interfaces/order.interface'
-import { ordersActions } from '@/store/slices/orders-slice'
+import { ordersActions } from '@/store/orders-slice'
 import { AppDispatch, RootState } from '@/store/store'
 import { useDispatch, useSelector } from 'react-redux'
 
