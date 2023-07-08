@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 
 const StyledSpan = styled.span`
@@ -11,7 +11,11 @@ interface Props {
 }
 
 export default function Counter({ orderDate }: Props) {
-	const [seconds, setseconds] = useState(0)
+	const orderDateRef = useRef(new Date(orderDate).getTime())
+
+	const [seconds, setseconds] = useState(
+		Math.floor((new Date().getTime() - orderDateRef.current) / 1000)
+	)
 
 	useEffect(() => {
 		const interval = setInterval(() => {

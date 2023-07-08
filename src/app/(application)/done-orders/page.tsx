@@ -10,7 +10,7 @@ export default function DoneOrdersPage() {
 		<PageContent
 			title='Finished orders'
 			filterCondition={filterCondition}
-			emptyMessage='No done orders yet'
+			emptyMessage='No finished orders yet'
 		/>
 	)
 }
