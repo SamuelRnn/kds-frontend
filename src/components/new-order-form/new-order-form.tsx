@@ -99,7 +99,6 @@ function NewOrderForm({ closeModal }: Props, ref: React.Ref<HTMLFormElement>) {
 					</StyledSection>
 				</StyledSecondColumn>
 			</StyledFormLayout>
-			{/* <div>here buttons idk</div> */}
 		</StyledForm>
 	)
 }
